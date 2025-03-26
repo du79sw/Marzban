@@ -539,6 +539,26 @@ export const UserDialog: FC<UserDialogProps> = () => {
                           }}
                         />
                       </FormControl>
+                      <FormControl mb={"10px"}>
+                        <FormLabel>{t("userDialog.concurrentConnections")}</FormLabel>
+                        <Controller
+                          control={form.control}
+                          name="concurrent_connections"
+                          render={({ field }) => {
+                            return (
+                              <Input
+                                type="number"
+                                size="sm"
+                                borderRadius="6px"
+                                onChange={field.onChange}
+                                disabled={disabled}
+                                error={form.formState.errors.concurrent_connections?.message}
+                                value={field.value ? String(field.value) : "1"}
+                              />
+                            );
+                          }}
+                        />
+                      </FormControl>
                       <Collapse
                         in={!!(dataLimit && dataLimit > 0)}
                         animateOpacity
